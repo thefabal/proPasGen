@@ -80,7 +80,6 @@ namespace PasGen {
             switchLanguage();
 
             lvPasswords.SmallImageList = ilPassword;
-            passwordsMenu.Enabled = false;
 
             timer.Interval = 1000;
             timer.Tick += new EventHandler( timer_tick );
