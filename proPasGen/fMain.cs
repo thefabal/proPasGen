@@ -80,6 +80,7 @@ namespace PasGen {
             switchLanguage();
 
             lvPasswords.SmallImageList = ilPassword;
+            passwordsMenu.Enabled = false;
 
             timer.Interval = 1000;
             timer.Tick += new EventHandler( timer_tick );
@@ -487,6 +488,12 @@ namespace PasGen {
 
         private void lvPasswords_MouseDoubleClick( object sender, MouseEventArgs e ) {
             tsmCopy_Click( sender, e );
+        }
+
+        private void passwordsMenu_Opening( object sender, CancelEventArgs e ) {
+            if( lvPasswords.Items.Count == 0 ) {
+                e.Cancel = true;
+            }
         }
     }
 

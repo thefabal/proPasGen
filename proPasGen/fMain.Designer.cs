@@ -481,6 +481,7 @@
             this.tsmCopy});
             this.passwordsMenu.Name = "passwordsMenu";
             resources.ApplyResources(this.passwordsMenu, "passwordsMenu");
+            this.passwordsMenu.Opening += new System.ComponentModel.CancelEventHandler(this.passwordsMenu_Opening);
             // 
             // tsmCopy
             // 
