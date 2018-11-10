@@ -39,11 +39,11 @@ namespace PasGen {
             this.MinimumSize = this.Size;
             this.MaximumSize = this.Size;
 
-            string strSettings = Properties.Settings.Default["settings"].ToString();
+            string strSettings = Properties.Settings.Default.settings.ToString();
             if(strSettings.Length > 0) {
                 strSettings = DecryptPassword( strSettings );
 
-                settings settings = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<settings>( strSettings );
+                settings settings = new JavaScriptSerializer().Deserialize<settings>( strSettings );
 
                 cbLetterCapital.Checked = settings.LetterCapital;
                 cbLetterLower.Checked = settings.LetterLower;
@@ -246,8 +246,10 @@ namespace PasGen {
             }
 
             for(int i = 0; i < udPasswordQuantity.Value; i++ ) {
-                Thread t = new Thread( () => generatePassword( iPassLength, iSettings, random ) );
-                t.IsBackground = true;
+                Thread t = new Thread( ( ) => generatePassword( iPassLength, iSettings, random ) ) {
+                    IsBackground = true
+                };
+
                 t.Start();
             }
         }
